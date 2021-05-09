@@ -1,5 +1,7 @@
 # covid-vaccine-notification
 
+pip3 install cowin
+
 Edit the program and input following values before running
 district_id = '363' # Pune
 
