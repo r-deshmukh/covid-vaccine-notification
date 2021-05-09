@@ -12,8 +12,9 @@ def get(district_id, date, min_age_limit, minimum_slots):
 
     options = []
     if len(available_centers['centers']) >= 0:
+        print('Done for following centers')
         for center in available_centers['centers']:
-            #print(center['name'])
+            print(center['name'])
             for session in center['sessions']:
                 if (session['available_capacity'] >= minimum_slots) \
                         and (session['min_age_limit'] <= min_age_limit):
@@ -44,19 +45,20 @@ def take_action():
 
 while True:
     # Input following values before running
-    district_id = '363' # Pune
-    #district_id = '364' # Akola
-    date = '09-05-2021'
+    #district_id = '363' # Pune
+    district_id = '364' # Akola
+    date = '10-05-2021'
     min_age_limit = 18
     minimum_slots = 1
 
     options = []
     options = get(district_id, date, min_age_limit, minimum_slots)
     if len(options) > 0:
+        print(f'Available for following centers {options}')
         take_action()
         break
     else:
-        refresh_freq = 10
+        refresh_freq = 5
         print(f"============= [{datetime.now()}] Sleeping {refresh_freq} sec ==================")
         for i in range(refresh_freq, 0, -1):
             msg = f"No viable options. Next update in {i} seconds.."
@@ -65,3 +67,4 @@ while True:
             time.sleep(1)
 
     print('\n')
+
