@@ -38,15 +38,21 @@ def get(district_id, date, min_age_limit, minimum_slots):
     return options
 
 def take_action():
-    os.system('beep')
-    os.system('beep')
-    os.system('beep')
-    return True
+     if os.name == 'nt':
+         print('\7')
+         print('\7')
+         print('\7')
+         print('\7')
+     else:
+         os.system('beep')
+         os.system('beep')
+         os.system('beep')
+     return True
 
 while True:
     # Input following values before running
-    #district_id = '363' # Pune
-    district_id = '364' # Akola
+    district_id = '363' # Pune
+    #district_id = '364' # Akola
     date = '10-05-2021'
     min_age_limit = 18
     minimum_slots = 1
