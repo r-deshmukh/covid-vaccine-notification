@@ -52,11 +52,15 @@ while True:
     minimum_slots = 1
 
     options = []
-    options = get(district_id, date, min_age_limit, minimum_slots)
+    try:
+        options = get(district_id, date, min_age_limit, minimum_slots)
+    except:
+        print('Unable to get : Unknown Error')
+        
     if len(options) > 0:
         print(f'Available for following centers {options}')
         take_action()
-        break
+        #break
     else:
         refresh_freq = 5
         print(f"============= [{datetime.now()}] Sleeping {refresh_freq} sec ==================")
